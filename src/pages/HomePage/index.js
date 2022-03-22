@@ -29,7 +29,7 @@ const HomePage = ({ }) => {
                 </SearchResult>
             </HomeContents>
             <HomeSide>
-                <HomeSideItem>
+                {/* <HomeSideItem>
                     <div>
                         <div>공지사항</div>
                         <div>
@@ -40,7 +40,7 @@ const HomePage = ({ }) => {
                             }
                         </div>
                     </div>
-                </HomeSideItem>
+                </HomeSideItem> */}
             </HomeSide>
         </HomePageWrap>
     )
