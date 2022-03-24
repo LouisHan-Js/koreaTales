@@ -19,7 +19,7 @@ const TalesMap = ({ }) => {
     const MyMapComponent = ({ center, zoom,}) => {
         const ref = useRef();
         const [map, setMap] = useState(null);
-        let historicalOverlay;
+        // let historicalOverlay;
 
         useEffect(() => {
           let googleMap = new window.google.maps.Map(ref.current, {
@@ -29,37 +29,24 @@ const TalesMap = ({ }) => {
           setMap(googleMap)
         }, []);
         
-        useEffect(() => {
-            if(map){
-                const imageBounds = {
-                    north: 38.649147,
-                    south: 34.035352,
-                    west: 125.6818031,
-                    east: 129.946012
-                };
+        // useEffect(() => {
+        //     if(map){
+        //         const imageBounds = {
+        //             north: 38.649147,
+        //             south: 34.035352,
+        //             west: 125.6818031,
+        //             east: 129.946012
+        //         };
                 
-                historicalOverlay = new window.google.maps.GroundOverlay(
-                "images/testMap.png",
-                imageBounds
-                );
-                historicalOverlay.setMap(map);
-            }
-        }, [map])
+        //         historicalOverlay = new window.google.maps.GroundOverlay(
+        //         "images/testMap.png",
+        //         imageBounds
+        //         );
+        //         historicalOverlay.setMap(map);
+        //     }
+        // }, [map])
 
         return <GoogleMap ref={ref} id="map" />;
-
-        // const ref = useRef();
-        // const [map, setMap] = useState();
-        // let historicalOverlay;
-
-        // useEffect(() => {
-        //     setMap(new window.google.maps.Map(ref.current, {
-        //         center,
-        //         zoom,
-        //     }))
-
-        // });
-
     }
 
     const center = { lat: 35.7354629, lng: 127.6818031 };
