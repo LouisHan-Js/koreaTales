@@ -162,7 +162,8 @@ const ImageView = styled.div`
     background-color: white;
     position: relative;
     >img{
-        height: 100%;
+        // height: 100%;
+        width: 500px;
         // height: calc(90% - 200px);
         position: absolute;
         left: 10%;

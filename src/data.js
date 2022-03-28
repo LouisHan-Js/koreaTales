@@ -64,6 +64,34 @@ export const NORMAL3 = [
     {title: '명당 잡아준 명풍수 기본형 지도3', color:4, contents: '이야기 상세 설명', src:'images/mapImage/normal3/6-4.png'},
     {title: '명당 잡아준 명풍수 기본형 지도3', color:5, contents: '이야기 상세 설명', src:'images/mapImage/normal3/6-5.png'},
 ]
+
+export const sawe1 = [
+    {title: '푸대접 받던 사위1', color:1, contents: '이야기 상세 설명', src:'images/mapImage/sawe1/12-1.png'},
+    {title: '푸대접 받던 사위1', color:2, contents: '이야기 상세 설명', src:'images/mapImage/sawe1/12-2.png'},
+    {title: '푸대접 받던 사위1', color:3, contents: '이야기 상세 설명', src:'images/mapImage/sawe1/12-3.png'},
+    {title: '푸대접 받던 사위1', color:4, contents: '이야기 상세 설명', src:'images/mapImage/sawe1/12-4.png'},
+]
+export const sawe2 = [
+    {title: '푸대접 받던 사위2', color:1, contents: '이야기 상세 설명', src:'images/mapImage/sawe2/11-1.png'},
+    {title: '푸대접 받던 사위2', color:2, contents: '이야기 상세 설명', src:'images/mapImage/sawe2/11-2.png'},
+    {title: '푸대접 받던 사위2', color:3, contents: '이야기 상세 설명', src:'images/mapImage/sawe2/11-3.png'},
+    {title: '푸대접 받던 사위2', color:4, contents: '이야기 상세 설명', src:'images/mapImage/sawe2/11-4.png'},
+]
+
+export const sawe3 = [
+    {title: '푸대접 받던 사위 - 라인', color:1, contents: '이야기 상세 설명', src:'images/mapImage/sawe_line/sawe_line_1.png'},
+    {title: '푸대접 받던 사위 - 라인', color:2, contents: '이야기 상세 설명', src:'images/mapImage/sawe_line/sawe_line_2.png'},
+    {title: '푸대접 받던 사위 - 라인', color:3, contents: '이야기 상세 설명', src:'images/mapImage/sawe_line/sawe_line_3.png'},
+]
+export const poong = [
+    {title: '명당 잡아준 명풍수 - 라인', color:1, contents: '이야기 상세 설명', src:'images/mapImage/poong_line/poong_line_1.png'},
+    {title: '명당 잡아준 명풍수 - 라인', color:2, contents: '이야기 상세 설명', src:'images/mapImage/poong_line/poong_line_2.png'},
+    {title: '명당 잡아준 명풍수 - 라인', color:3, contents: '이야기 상세 설명', src:'images/mapImage/poong_line/poong_line_3.png'},
+]
+export const poong_line = [
+    {title: '명당 잡아준 명풍수 - 내부 라인', color:1, contents: '이야기 상세 설명', src:'images/mapImage/poong_innerLine/poong_innerLine.png'},
+    {title: '명당 잡아준 명풍수 - 내부 라인', color:2, contents: '이야기 상세 설명', src:'images/mapImage/poong_innerLine/poong_innerLine.png'},
+]
 export const ETCIMAGES = [
     {title: '기타', color:1, contents: '이야기 상세 설명', src:'images/mapImage/etc/8-1.png'},
     {title: '기타', color:2, contents: '이야기 상세 설명', src:'images/mapImage/etc/8-2.png'},
@@ -77,6 +105,9 @@ export const TALESDATASOURCE = [
     {title: '어려운 소송에 명판결하기', contents: '이야기 상세 설명', data: [HARDWORKMAP]},
     {title: '명당 잡아준 명풍수 변이형 지도', contents: '이야기 상세 설명', data: [VARIANT1, VARIANT2]},
     {title: '명당 잡아준 명풍수 기본형 지도', contents: '이야기 상세 설명', data: [NORMAL1,NORMAL2,NORMAL3]},
+    {title: '명당 잡아준 명풍수 라인', contents: '이야기 상세 설명', data: [poong, poong_line]},
+    {title: '푸대접 받던 사위1', contents: '이야기 상세 설명', data: [sawe1,sawe2]},
+    {title: '푸대접 받던 사위 라인', contents: '이야기 상세 설명', data: [sawe3]},
     {title: '그외', contents: '이야기 상세 설명', data: [ETCIMAGES]}
 ]
 
