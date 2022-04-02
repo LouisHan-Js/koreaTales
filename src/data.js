@@ -130,9 +130,9 @@ export const SAWE_ICON2 = [
 ]
 
 export const pungsu = [
-    {title: '변이형', color:1, contents: '이야기 상세 설명', src:'images/talesImages/line/pungsu_map_black.png'},
-    {title: '변이형', color:2, contents: '이야기 상세 설명', src:'images/talesImages/line/pungsu_map_blue.png'},
-    {title: '변이형', color:3, contents: '이야기 상세 설명', src:'images/talesImages/line/pungsu_map_red.png'},
+    {title: '명당 잡아준 명풍수', color:1, contents: '이야기 상세 설명', src:'images/talesImages/line/pungsu_map_black.png'},
+    {title: '명당 잡아준 명풍수', color:2, contents: '이야기 상세 설명', src:'images/talesImages/line/pungsu_map_blue.png'},
+    {title: '명당 잡아준 명풍수', color:3, contents: '이야기 상세 설명', src:'images/talesImages/line/pungsu_map_red.png'},
 ]
 
 // 지도 목록
