@@ -5,7 +5,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 
 const TalesImage = ({ }) => {
     const imageSize = [200,400, 600,800,1200];
-    const [imgSizeIndex, setImgSizeIndex] = useState(1);
+    const [imgSizeIndex, setImgSizeIndex] = useState(2);
     const [imgWidth, setImgWidth] = useState(600);
     const [searchFlag, setSearchFlag] = useState(false);
     const [result, setResult] = useState([]);
@@ -189,7 +189,7 @@ const TalesImage = ({ }) => {
                 <div onClick={e => changeImgSizeUp(true)}>확대</div>
                 <div onClick={e => changeImgSizeUp(false)}>축소</div>
                 <div onClick={toggleIndex}>
-                    인덱스{indexPopup && <div><img alt='img' src='images/mapImage/default/1-1.png' /></div>}
+                    인덱스{indexPopup && <div><img alt='img' src='images/talesImages/line/sawe_map_black.png' /></div>}
                 </div>
             </FloatingButton>
             <ImageCanvas>
@@ -345,8 +345,8 @@ const FloatingButton = styled.div`
         text-align: center;
         border: 1px solid #B0BEC5;
         >div{
-            width: 120px;
-            height: 150px;
+            width: 140px;
+            height: 180px;
             margin-top: -50px;
             margin-left: 55px;
             background-color: white;

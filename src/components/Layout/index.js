@@ -25,9 +25,9 @@ const Layout = () =>  {
   }
   const pages = [
     {title: '메인', key: 0, page: <HomePage movePage={setScreenKey} /> },
-    {title: '지역별 분포 ', key: 1, page: <TalesMap /> },
-    {title: '주제별 검색 ', key: 2, page: <TalesImage /> },
-    {title: '출전 ', key: 4, page: <TalesSource /> },
+    {title: '지역별 분포 ', key: 1, page: <TalesMap movePage={setScreenKey} /> },
+    {title: '주제별 검색 ', key: 2, page: <TalesImage movePage={setScreenKey} /> },
+    {title: '출전 ', key: 4, page: <TalesSource movePage={setScreenKey} /> },
   ]
 
 

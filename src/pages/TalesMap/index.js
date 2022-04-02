@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { TALESLOCATIONS, TALESLOCATIONS2, COLORS } from '../../data';
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineBook } from "react-icons/ai";
 
-const TalesMap = ({ }) => {
+const TalesMap = ({ movePage }) => {
     const [result, setResult] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const center = { lat: 35.7354629, lng: 127.6818031 };
@@ -75,20 +75,21 @@ const TalesMap = ({ }) => {
                     });
                     const infowindow = new window.google.maps.InfoWindow({
                         content: `
-                        <div class='customInfo'>
-                            <div class='title'>설화 명:<span>${item.title}</span></div>
-                            <div class='title'>채록 장소:<span>${item.name}</span></div>
-                            <div class='info'>
-                                <div>구연자:<span>${item.orator}</span></div>
-                                <div>나이:<span>${item.gender}</span></div>
-                                <div>성별:<span>${item.age}</span></div>
+                            <div class='customInfo'>
+                                <div class='title'>설화 명:<span>${item.title}</span></div>
+                                <div class='title'>채록 장소:<span>${item.name}</span></div>
+                                <div class='info'>
+                                    <div>구연자:<span>${item.orator}</span></div>
+                                    <div>나이:<span>${item.gender}</span></div>
+                                    <div>성별:<span>${item.age}</span></div>
+                                </div>
+                                <div class='title'>채록 시기:<span>${item.date}</span></div>
+                                <div class='title'>상세 내용</div>
+                                <div class='contents'>
+                                    <div>${item.contents}</div>
+                                </div>
                             </div>
-                            <div class='title'>채록 시기:<span>${item.date}</span></div>
-                            <div class='title'>상세 내용</div>
-                            <div class='contents'>
-                                <div>${item.contents}</div>
-                            </div>
-                        </div>`,
+                        `,
                     });
                     marker.index = item.index
                     
@@ -112,7 +113,7 @@ const TalesMap = ({ }) => {
                     <div onClick={closeUp}>확대</div>
                     <div onClick={closeDown}>축소</div>
                     <div onClick={toggleIndex}>
-                        인덱스{indexPopup && <div><img alt='img' src='images/mapImage/default/1-1.png' /></div>}
+                        인덱스{indexPopup && <div><img alt='img' src='images/talesImages/line/sawe_map_black.png' /></div>}
                     </div>
                 </FloatingButton>
                 <GoogleMap ref={ref} id="map" />
@@ -171,7 +172,7 @@ const TalesMap = ({ }) => {
                     <SearchItem>
                         <div>
                             <button>검색</button>
-                            <button>권역 지도</button>
+                            <button onClick={e => movePage(2)}>권역 지도</button>
                         </div>
                     </SearchItem>
                 </SideMenu>
@@ -201,6 +202,7 @@ const SideMenu = styled.div`
 const SearchItem = styled.div`
     padding: 10px 10px 0px;
     >div{
+        cursor: pointer;
         padding: 12px;
         background-color: white;
         border-radius: 5px;
@@ -235,7 +237,7 @@ const SearchItem = styled.div`
 const FloatingButton = styled.div`
     position: absolute;
     left: 320px;
-    top: 130px;
+    top: 140px;
     z-index: 99;
     >div{
         font-size: 16px;
@@ -244,14 +246,14 @@ const FloatingButton = styled.div`
         width: 50px;
         height: 50px;
         text-align: center;
-        border: 1px solid #ECEFF1;
+        border: 1px solid #B0BEC5;
         >div{
-            width: 120px;
-            height: 150px;
+            width: 140px;
+            height: 180px;
             margin-top: -50px;
             margin-left: 55px;
             background-color: white;
-            border: 1px solid #ECEFF1;
+            border: 1px solid #B0BEC5;
             padding-top: 5px;
             img{
                 width: 100%;
