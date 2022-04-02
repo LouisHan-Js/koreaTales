@@ -76,6 +76,7 @@ const TalesMap = ({ movePage }) => {
                         map: map,
                         icon: image
                     });
+                    // <div>나이:<span>${story.age}</span></div>
                     const infowindow = new window.google.maps.InfoWindow({
                         content: `
                             <div class='customInfo'>
@@ -83,8 +84,7 @@ const TalesMap = ({ movePage }) => {
                                 <div class='title'>채록 장소:<span>${story.getLocation}</span></div>
                                 <div class='info'>
                                     <div>구연자:<span>${story.name}</span></div>
-                                    <div>나이:<span>${story.gender}</span></div>
-                                    <div>성별:<span>${story.age}</span></div>
+                                    <div>성별:<span>${story.gender}</span></div>
                                 </div>
                                 <div class='title'>채록 시기:<span>${story.date}</span></div>
                                 <div class='title'>상세 내용</div>
@@ -252,8 +252,8 @@ const FloatingButton = styled.div`
         text-align: center;
         border: 1px solid #B0BEC5;
         >div{
-            width: 140px;
-            height: 180px;
+            width: 180px;
+            height: 240px;
             margin-top: -50px;
             margin-left: 55px;
             background-color: white;

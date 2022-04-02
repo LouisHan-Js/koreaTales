@@ -119,14 +119,14 @@ export const SAWE_DEFAULT = [
 //     {title: '기타', color:3, contents: '이야기 상세 설명', src:'images/mapImage/etc/8-3.png'},
 // ]
 export const SAWE_ICON1 = [
-    {title: '대지', color:1, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_black.png'},
-    {title: '대지', color:3, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_red.png'},
-    {title: '대지', color:2, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_blue.png'},
+    {title: '욕보이기형, 자수성가형, 트릭스터형, 기타', color:1, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_black.png'},
+    {title: '욕보이기형, 자수성가형, 트릭스터형, 기타', color:3, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_red.png'},
+    {title: '욕보이기형, 자수성가형, 트릭스터형, 기타', color:2, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_blue.png'},
 ]
 export const SAWE_ICON2 = [
-    {title: '산+대지', color:1, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_san_dae_dae_black.png'},
-    {title: '산+대지', color:2, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_san_dae_dae_blue.png'},
-    {title: '산+대지', color:3, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_san_dae_dae_red.png'},
+    {title: '매관비판형', color:1, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_san_dae_dae_black.png'},
+    {title: '매관비판형', color:2, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_san_dae_dae_blue.png'},
+    {title: '매관비판형', color:3, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_san_dae_dae_red.png'},
 ]
 
 export const pungsu = [
@@ -137,8 +137,8 @@ export const pungsu = [
 
 // 지도 목록
 export const TALESDATASOURCE = [
-    {title: '푸대접 받던 사위', contents: '참고 내용', data: [SAWE_ICON1, SAWE_ICON2]},
-    {title: '명당 잡아준 명풍수', contents: '참고 내용', data: [pungsu]},
+    {index: 0, title: '푸대접 받던 사위', contents: '참고 내용', data: [SAWE_ICON1, SAWE_ICON2]},
+    {index: 1,title: '명당 잡아준 명풍수', contents: '참고 내용', data: [pungsu]},
     // {title: '푸대접 받던 사위', contents: '산 대지 대지', data: [SAWE_ICON2]},
     // {title: '어려운 소송에 명판결하기', contents: '이야기 상세 설명', data: [HARDWORKMAP]},
     // {title: '명당 잡아준 명풍수 변이형 지도', contents: '이야기 상세 설명', data: [VARIANT1, VARIANT2]},
@@ -399,7 +399,7 @@ export const TALESLOCATIONS2 = [
 		
 
 export const EXAMPLESTORY = [
-    {title: '병조판서 된 막내사위', name:'양덕환',source:'한국구비문학대계',getLocation:'경기도 인천시', gender:'남', age:'불명', date:'1982-07-29',contents:`우리 선조에서 병조판서하신 분이 계신데, 그 분이 어려웠단 말야 그리구 뭐 자기 집의 의식이 풍부하드래도 참 과거 출세 못 허구, 아니면 집 안에서 거, 결숙시킬 생각을 하구. 그러니깐 뭐 삼대 무관이면 장놈이라 그랬거든. 삼대를 내려오면서 다 벼슬한, 아 사람이 없으면 양반이라구 칭할 수가 없었어 아주 판 상놈은 아닌데. 거기서 인저 학생들이 들어서 알지 모르지만 중인이니 상인이니 그랬거든. 상사람이란 사람은 남의 집, 그 하인 노릇을 하구 그런 생활을 하구 사는 사람이 그저 상놈, 상사람이라 하지 않구 상놈이라구 그랬지. 상놈은 상놈 냄(남)의 집 순진한 사람은 아무렇게나 살구 중인이라는 사람은 잘하며는 선달 벼슬같은 것을 주었어. 선달 삼복부 정도는 지낼 수 있지 삼대 무관, 게이 그 분이 에 결혼을 처가댁이, 에 동생이 열 형제였단 말야. 그래 삼형제의 막내 사위안데 그 집안에 처가에 무실(무슨) 큰 일이 있어서 인저 가족들 다 모여서 큰 일을 치뤘을거 아냐? 그 인제 큰 일을 다 치루고 나서 장모가 사위한테다 한턱을 하는 거지 수고했다구. 그러니까 장모님이 앉아설라무네 무어 전부 시키는데,
+    {title: '병조판서 된 막내사위', name:'양덕환',source:'한국구비문학대계',getLocation:'경기도 인천시', gender:'남', age:'', date:'1982-07-29',contents:`우리 선조에서 병조판서하신 분이 계신데, 그 분이 어려웠단 말야 그리구 뭐 자기 집의 의식이 풍부하드래도 참 과거 출세 못 허구, 아니면 집 안에서 거, 결숙시킬 생각을 하구. 그러니깐 뭐 삼대 무관이면 장놈이라 그랬거든. 삼대를 내려오면서 다 벼슬한, 아 사람이 없으면 양반이라구 칭할 수가 없었어 아주 판 상놈은 아닌데. 거기서 인저 학생들이 들어서 알지 모르지만 중인이니 상인이니 그랬거든. 상사람이란 사람은 남의 집, 그 하인 노릇을 하구 그런 생활을 하구 사는 사람이 그저 상놈, 상사람이라 하지 않구 상놈이라구 그랬지. 상놈은 상놈 냄(남)의 집 순진한 사람은 아무렇게나 살구 중인이라는 사람은 잘하며는 선달 벼슬같은 것을 주었어. 선달 삼복부 정도는 지낼 수 있지 삼대 무관, 게이 그 분이 에 결혼을 처가댁이, 에 동생이 열 형제였단 말야. 그래 삼형제의 막내 사위안데 그 집안에 처가에 무실(무슨) 큰 일이 있어서 인저 가족들 다 모여서 큰 일을 치뤘을거 아냐? 그 인제 큰 일을 다 치루고 나서 장모가 사위한테다 한턱을 하는 거지 수고했다구. 그러니까 장모님이 앉아설라무네 무어 전부 시키는데,
     “거 사위들이 와서 애를 쓰고 모두 인제 손님들 하구, 여, 여러 손님들 하구 자시두 못 하구 했을 테니까 닭이나 통닭이나 하나 시켜설라무네 저녁에 술들이나 자시도록 해 주자.”구.
     “닭을, 닭을 잡으라.”
     구. 그러니까 저 인저, 저 부엌에서 일하는 하인들이 닭을 잡구. 인제 조금 있더니 안에서 인제 자기 부인이 안에 있을 거구 자기 동서끼리는 처남들서껀 사랑에 있을 거 아냐? 바깥에 사랑채에 가서 모여서 앉아서 담화를 허구 술도 갖다 먹구 그랬는데, 아 닭을 삶아 봤는데 닭 한 마리가 그만 괭이(고양이)가 물었어. 아 괭이가 뜯어 먹은 거 뺏었단 말야. 뺏어가지구서 그 하녀가 들어와서 하는 소리가, [테이프 9-앞에 연결]

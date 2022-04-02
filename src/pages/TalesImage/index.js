@@ -160,11 +160,11 @@ const TalesImage = ({ }) => {
                                     {
                                         result.length > 0 ? (
                                             result.map((item, index)=>{
-                                                return <div key={index}>
+                                                return <div key={index} onClick={e => {item.index === 1 && onCheckItem(item.data[0])}}>
                                                     <div>{(index+1)+'.'} {item.title}</div>
                                                     {
-                                                        item.data.map((itm, idx) => {
-                                                            return <div key={idx} onClick={e => onCheckItem(itm)}> - {itm[0].title}</div>
+                                                        (item.index !== 1) && item.data.map((itm, idx) => {
+                                                            return <SearchResultItem key={idx} onClick={e => onCheckItem(itm)}> - {itm[0].title}</SearchResultItem>
                                                         })
                                                     }
                                                 </div>
@@ -187,6 +187,13 @@ const TalesImage = ({ }) => {
                     인덱스{indexPopup && <div><img alt='img' src='images/talesImages/line/sawe_map_black.png' /></div>}
                 </div>
             </FloatingButton>
+            <FloatingRightButton>
+                <div>&#9675; 트릭스터형</div>
+                <div>&#9679; 자수성가형</div>
+                <div>&#9673; 욕보이기형</div>
+                <div>&#9650; 매관비판형</div>	
+                <div>&#9633; 기타</div>
+            </FloatingRightButton>
             <ImageCanvas>
                 <div>
                     <ImageCanvasSelectItem>
@@ -221,7 +228,7 @@ const ImageCanvas = styled.div`
     >div{
         background-color: white;
         height: 100%;
-
+        overflow:scroll;
     }
 `;
 const ImageCanvasContents = styled.div`
@@ -323,6 +330,9 @@ const SearchResult = styled.div`
         margin-bottom: 10px;
     }
 `;
+const SearchResultItem = styled.div`
+    font-size: 12px;
+`;
 const EmptyResult = styled.div`
     height: 40px;
     font-size: 22px;
@@ -344,8 +354,8 @@ const FloatingButton = styled.div`
         text-align: center;
         border: 1px solid #B0BEC5;
         >div{
-            width: 140px;
-            height: 180px;
+            width: 180px;
+            height: 240px;
             margin-top: -50px;
             margin-left: 55px;
             background-color: white;
@@ -355,5 +365,22 @@ const FloatingButton = styled.div`
                 width: 100%;
             }
         }
+    }
+`;
+
+const FloatingRightButton = styled.div`
+    position: absolute;
+    right: 20px;
+    top: 140px;
+    z-index: 99;
+    >div{
+        font-size: 13px;
+        line-height: 30px;
+        background-color: white;
+        width: 100px;
+        height: 30px;
+        text-align: left;
+        text-indent: 5px;
+        border: 1px solid #B0BEC5;
     }
 `;
