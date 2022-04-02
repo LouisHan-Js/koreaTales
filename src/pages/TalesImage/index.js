@@ -11,6 +11,7 @@ const TalesImage = ({ }) => {
     const [result, setResult] = useState([]);
     const [selectItem1, setSelectItem1] = useState(null);
     const [selectItem2, setSelectItem2] = useState(null);
+    const [selectItem3, setSelectItem3] = useState(null);
     const [indexPopup, setIndexPopup] = useState(false);
 
     useEffect(() => {
@@ -33,12 +34,20 @@ const TalesImage = ({ }) => {
             setSelectItem2(null);
             return;
         }
+        if(data === selectItem3){
+            setSelectItem3(null);
+            return;
+        }
         if(!selectItem1){
             setSelectItem1(data);
             return;
         }
         if(!selectItem2){
             setSelectItem2(data);
+            return;
+        }
+        if(!selectItem3){
+            setSelectItem3(data);
             return;
         }
     }
@@ -62,10 +71,18 @@ const TalesImage = ({ }) => {
     }
 
     const selectCancel = (index) => {
-        if(index === 1){
-            setSelectItem1(null);
-        }else{
-            setSelectItem2(null);
+        switch (index) {
+            case 1:
+                setSelectItem1(null);
+                break;
+            case 2:
+                setSelectItem2(null);
+                break;
+            case 3:
+                setSelectItem3(null);
+                break;
+            default:
+                break;
         }
     }
     const toggleIndex = () => {
@@ -73,36 +90,14 @@ const TalesImage = ({ }) => {
     }
 
     const imageViewer = () => {
-        if(selectItem1 && selectItem2){
-            return (
-                <ImageView imgWidth={imgWidth}>
-                    <img alt='default' src={SAWE_DEFAULT[0].src} />
-                    <img alt={selectItem1[0].title} src={selectItem1[0].src}/>
-                    <img alt={selectItem2[1].title} src={selectItem2[1].src}/>
-                </ImageView>
-            )
-        }else if(selectItem1){
-            return (
-                <ImageView imgWidth={imgWidth}>
-                    <img alt='default' src={SAWE_DEFAULT[0].src} />
-                    <img alt={selectItem1[0].title} src={selectItem1[0].src}/>
-                </ImageView>
-            )
-        }else if(selectItem2){
-            return (
-                <ImageView imgWidth={imgWidth}>
-                    <img alt='default' src={SAWE_DEFAULT[0].src} />
-                    <img alt={selectItem2[0].title} src={selectItem2[0].src}/>
-                </ImageView>
-            )
-        }else{
-            return (
-                <ImageView imgWidth={imgWidth}>
-                    <img alt='default' src={SAWE_DEFAULT[0].src} />
-                    {/* <img alt={DEFAULTMAP[0].title} src={DEFAULTMAP[0].src}/> */}
-                </ImageView>
-            )
-        }
+        return (
+            <ImageView imgWidth={imgWidth}>
+                <img alt='default' src={SAWE_DEFAULT[0].src} />
+                {selectItem1 && <img alt={selectItem1[0].title} src={selectItem1[0].src}/>}
+                {selectItem2 && <img alt={selectItem2[1].title} src={selectItem2[1].src}/>}
+                {selectItem3 && <img alt={selectItem3[2].title} src={selectItem3[2].src}/>}
+            </ImageView>
+        )
     }
 
 
@@ -166,10 +161,10 @@ const TalesImage = ({ }) => {
                                         result.length > 0 ? (
                                             result.map((item, index)=>{
                                                 return <div key={index}>
-                                                    <div>{item.title}</div>
+                                                    <div>{(index+1)+'.'} {item.title}</div>
                                                     {
                                                         item.data.map((itm, idx) => {
-                                                            return <div key={idx} onClick={e => onCheckItem(itm)}>- {itm[0].title}</div>
+                                                            return <div key={idx} onClick={e => onCheckItem(itm)}> - {itm[0].title}</div>
                                                         })
                                                     }
                                                 </div>
@@ -197,6 +192,7 @@ const TalesImage = ({ }) => {
                     <ImageCanvasSelectItem>
                         {selectItem1 && <div onClick={e => selectCancel(1)}>{selectItem1[0].title} <AiOutlineCloseCircle /></div>}
                         {selectItem2 && <div onClick={e => selectCancel(2)}>{selectItem2[0].title} <AiOutlineCloseCircle /></div>}
+                        {selectItem3 && <div onClick={e => selectCancel(3)}>{selectItem3[0].title} <AiOutlineCloseCircle /></div>}
                     </ImageCanvasSelectItem>
                     <ImageCanvasContents>
                         {imageViewer()}
@@ -318,10 +314,13 @@ const SearchResult = styled.div`
     height: 300px;
     overflow-y: scroll;
     >div{
+        width: 100%;
+        display: inline-block;
         cursor: pointer;
-        height: 40px;
+        // height: 40px;
         line-height: 40px;
-        text-indent: 5px;
+        text-indent: 15px;
+        margin-bottom: 10px;
     }
 `;
 const EmptyResult = styled.div`

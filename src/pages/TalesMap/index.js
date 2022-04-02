@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import styled from 'styled-components';
-import { TALESLOCATIONS, TALESLOCATIONS2, COLORS } from '../../data';
+import { TALESLOCATIONS, TALESLOCATIONS2, COLORS, EXAMPLESTORY } from '../../data';
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineBook } from "react-icons/ai";
 
 const TalesMap = ({ movePage }) => {
@@ -57,6 +57,9 @@ const TalesMap = ({ movePage }) => {
         }
 
         const makeMarkers = (dataList) => {
+            // 예제 이야기
+            let story = EXAMPLESTORY[0]
+
             const image = {
                 url: "/images/map/point.png",
                 size: new window.google.maps.Size(32, 32),
@@ -76,18 +79,19 @@ const TalesMap = ({ movePage }) => {
                     const infowindow = new window.google.maps.InfoWindow({
                         content: `
                             <div class='customInfo'>
-                                <div class='title'>설화 명:<span>${item.title}</span></div>
-                                <div class='title'>채록 장소:<span>${item.name}</span></div>
+                                <div class='title'>설화 명:<span>${story.title}</span></div>
+                                <div class='title'>채록 장소:<span>${story.getLocation}</span></div>
                                 <div class='info'>
-                                    <div>구연자:<span>${item.orator}</span></div>
-                                    <div>나이:<span>${item.gender}</span></div>
-                                    <div>성별:<span>${item.age}</span></div>
+                                    <div>구연자:<span>${story.name}</span></div>
+                                    <div>나이:<span>${story.gender}</span></div>
+                                    <div>성별:<span>${story.age}</span></div>
                                 </div>
-                                <div class='title'>채록 시기:<span>${item.date}</span></div>
+                                <div class='title'>채록 시기:<span>${story.date}</span></div>
                                 <div class='title'>상세 내용</div>
                                 <div class='contents'>
-                                    <div>${item.contents}</div>
+                                    <pre>${story.contents}</pre>
                                 </div>
+                                <div>출처:<span>${story.source}</span></div>
                             </div>
                         `,
                     });

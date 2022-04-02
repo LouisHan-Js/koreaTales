@@ -15,8 +15,8 @@ code {
 .customInfo{
   color: black;
   font-weight: bold;
-  width: 250px;
-  height: 170px;
+  width: 350px;
+  height: 300px;
 }
 .customInfo span{
   margin-left: 5px;
@@ -36,11 +36,13 @@ code {
   width: 50%;
 }
 .customInfo>.contents{
-  padding: 5px 0px;
 }
-.customInfo>.contents>div{
-  width: 95%;
-  height: 50px;
+.customInfo>.contents>pre{
+  word-break:break-all;
+  white-space:normal;
+  /* width: 95%; */
+  height: 120px;
+  padding: 10px;
   border: 1px solid black;
   overflow-y: scroll;
 }

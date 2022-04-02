@@ -119,19 +119,26 @@ export const SAWE_DEFAULT = [
 //     {title: '기타', color:3, contents: '이야기 상세 설명', src:'images/mapImage/etc/8-3.png'},
 // ]
 export const SAWE_ICON1 = [
-    {title: '대지 대지', color:1, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_black.png'},
-    {title: '대지 대지', color:2, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_blue.png'},
-    {title: '대지 대지', color:3, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_red.png'},
+    {title: '대지', color:1, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_black.png'},
+    {title: '대지', color:2, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_blue.png'},
+    {title: '대지', color:3, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_red.png'},
 ]
 export const SAWE_ICON2 = [
-    {title: '산 대지 대지', color:1, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_san_dae_dae_black.png'},
-    {title: '산 대지 대지', color:2, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_san_dae_dae_blue.png'},
-    {title: '산 대지 대지', color:3, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_san_dae_dae_red.png'},
+    {title: '산+대지', color:1, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_san_dae_dae_black.png'},
+    {title: '산+대지', color:2, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_san_dae_dae_blue.png'},
+    {title: '산+대지', color:3, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_san_dae_dae_red.png'},
+]
+
+export const pungsu = [
+    {title: '변이형', color:1, contents: '이야기 상세 설명', src:'images/talesImages/line/pungsu_map_black.png'},
+    {title: '변이형', color:2, contents: '이야기 상세 설명', src:'images/talesImages/line/pungsu_map_blue.png'},
+    {title: '변이형', color:3, contents: '이야기 상세 설명', src:'images/talesImages/line/pungsu_map_red.png'},
 ]
 
 // 지도 목록
 export const TALESDATASOURCE = [
     {title: '푸대접 받던 사위', contents: '참고 내용', data: [SAWE_ICON1, SAWE_ICON2]},
+    {title: '명당 잡아준 명풍수', contents: '참고 내용', data: [pungsu]},
     // {title: '푸대접 받던 사위', contents: '산 대지 대지', data: [SAWE_ICON2]},
     // {title: '어려운 소송에 명판결하기', contents: '이야기 상세 설명', data: [HARDWORKMAP]},
     // {title: '명당 잡아준 명풍수 변이형 지도', contents: '이야기 상세 설명', data: [VARIANT1, VARIANT2]},
@@ -390,3 +397,36 @@ export const TALESLOCATIONS2 = [
     {index: 47, position:{lng:128.747734,lat:35.2490716}, first:2, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '대덕동', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
 ];
 		
+
+export const EXAMPLESTORY = [
+    {title: '병조판서 된 막내사위', name:'양덕환',source:'한국구비문학대계',getLocation:'경기도 인천시', gender:'남', age:'불명', date:'1982-07-29',contents:`우리 선조에서 병조판서하신 분이 계신데, 그 분이 어려웠단 말야 그리구 뭐 자기 집의 의식이 풍부하드래도 참 과거 출세 못 허구, 아니면 집 안에서 거, 결숙시킬 생각을 하구. 그러니깐 뭐 삼대 무관이면 장놈이라 그랬거든. 삼대를 내려오면서 다 벼슬한, 아 사람이 없으면 양반이라구 칭할 수가 없었어 아주 판 상놈은 아닌데. 거기서 인저 학생들이 들어서 알지 모르지만 중인이니 상인이니 그랬거든. 상사람이란 사람은 남의 집, 그 하인 노릇을 하구 그런 생활을 하구 사는 사람이 그저 상놈, 상사람이라 하지 않구 상놈이라구 그랬지. 상놈은 상놈 냄(남)의 집 순진한 사람은 아무렇게나 살구 중인이라는 사람은 잘하며는 선달 벼슬같은 것을 주었어. 선달 삼복부 정도는 지낼 수 있지 삼대 무관, 게이 그 분이 에 결혼을 처가댁이, 에 동생이 열 형제였단 말야. 그래 삼형제의 막내 사위안데 그 집안에 처가에 무실(무슨) 큰 일이 있어서 인저 가족들 다 모여서 큰 일을 치뤘을거 아냐? 그 인제 큰 일을 다 치루고 나서 장모가 사위한테다 한턱을 하는 거지 수고했다구. 그러니까 장모님이 앉아설라무네 무어 전부 시키는데,
+    “거 사위들이 와서 애를 쓰고 모두 인제 손님들 하구, 여, 여러 손님들 하구 자시두 못 하구 했을 테니까 닭이나 통닭이나 하나 시켜설라무네 저녁에 술들이나 자시도록 해 주자.”구.
+    “닭을, 닭을 잡으라.”
+    구. 그러니까 저 인저, 저 부엌에서 일하는 하인들이 닭을 잡구. 인제 조금 있더니 안에서 인제 자기 부인이 안에 있을 거구 자기 동서끼리는 처남들서껀 사랑에 있을 거 아냐? 바깥에 사랑채에 가서 모여서 앉아서 담화를 허구 술도 갖다 먹구 그랬는데, 아 닭을 삶아 봤는데 닭 한 마리가 그만 괭이(고양이)가 물었어. 아 괭이가 뜯어 먹은 거 뺏었단 말야. 뺏어가지구서 그 하녀가 들어와서 하는 소리가, [테이프 9-앞에 연결]
+    “마님, 마님, 아이 닭, 큰일났읍니다. 아니 사위를 드릴라구 닭 삶은 것들 갖다 괭이가 한 마리 뜯어 먹었어요.”
+    그러니까 그 장모 하는 소리가,
+    “그건 막내사위 양서방이나 주라.”구.
+    “은제 또 잡갔냐?”
+    구 그런단 말야.
+    “뜯어설라무네 뜯어 먹었는지 안 먹었는지 알게 뭐야? 뜯어 처먹지.”
+    그러니까 딸이 들었어. 막내딸이 아, 주안상 나가는데 주안상 받는데 남편보구,
+    “가자.”
+    구. 정 부르니까 나왔어.
+    
+    “가자.”구.
+    “아, 왜 그리냐?”구.
+    “아, 재미있게 노는데 왜 그리냐?”
+    그러니깐,
+    “가자.”구.
+    “가서 내 얘기 허겠다.”
+    구 그러니깐,
+    “이런 수모를 받고 처가에 있어야 소용 없을거 가자.”
+    구. 그에 따라 나섰어. 막 부인이 막 끌구 가다시피 하니까 따라 나섰지. 다른 집두 아니고 처가에 가설라무네 부인이 그러니 그 뭐 이상허여 따라나서 쫓아 왔지. 아 와가지구선,
+    “왜 그리냐?”
+    니깐,
+    “그 정 궁금허냐?”
+    그거야. [기침]
+    “아, 궁금허구 이상스럽지 않냐?” 얘기를 했어요.
+    “그러니 당신이 틀림없이 과거 못헌 점으로 해서 다른 사람도 아닌 양차 부모헌테 그런 소리를 들으니 그런 수모를 받으니 나로선 그 분해서 견딜 수가 없으니까, 당신두 그르구 계시라.”구. 아, 방에다 앉허구 글을 배우래네. 어 나이 이십이 넘어 삼십이 된 분한테 글을 배이기 시작을 허니, 그런데 그냥이나 배우러라야지. 좀 허다헐 수 있어. 그래 상투를 해서 천장에다 매서 매달아 끈으로 해서 꾸뻑 졸면 이 꽉 잡아댕겨 버릇하고, 또 자연 또 그 뭐 잠 졸려도 잠을 안 자고 자기가 어디서 어디꺼정은 오늘 아주, 아주 다 통해야 돼. 통달해야 잠을자 그렇게 배워가지구서 사십돼 과거률 봤어. 과거에 통과하니까 병조판서가 됐어. 게 인제 병조공(兵曺公) 손이 많어. 거기가 그래 수모를 받고 저거 헐 제 [조사자: 그믄 그 막내] 막내 사위가 [조사자: 막내 사위, 그 우엣 분들은?] 우엣 분들두 다 벼슬 했는데 그래 벼슬 못헌 분이니까, 짐승 뜯어 먹던 닭이나 주라 그랬어. 그런 건데 그 소릴 듣구선 와서 낭중에 보니깐, 아, 그 사위가 병조판서가 되서 처가엘 가니깐 제일 아랫목에다 앉히구 장모가 식사 대접을 허드라구.
+    `}
+]
