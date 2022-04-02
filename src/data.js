@@ -109,8 +109,8 @@ export const ETCIMAGES = [
     {title: '기타', color:5, contents: '이야기 상세 설명', src:'images/mapImage/etc/8-5.png'},
 ]
 export const SAWE_DEFAULT = [
-    {title: '권역', color:2, contents: '이야기 상세 설명', src:'images/talesImages/line/sawe_map_blue.png'},
     {title: '권역', color:1, contents: '이야기 상세 설명', src:'images/talesImages/line/sawe_map_black.png'},
+    {title: '권역', color:2, contents: '이야기 상세 설명', src:'images/talesImages/line/sawe_map_blue.png'},
     {title: '권역', color:3, contents: '이야기 상세 설명', src:'images/talesImages/line/sawe_map_red.png'},
 ]
 // export const SAWE_LINE = [
@@ -120,8 +120,8 @@ export const SAWE_DEFAULT = [
 // ]
 export const SAWE_ICON1 = [
     {title: '욕보이기형, 자수성가형, 트릭스터형, 기타', color:1, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_black.png'},
-    {title: '욕보이기형, 자수성가형, 트릭스터형, 기타', color:3, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_red.png'},
     {title: '욕보이기형, 자수성가형, 트릭스터형, 기타', color:2, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_blue.png'},
+    {title: '욕보이기형, 자수성가형, 트릭스터형, 기타', color:3, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_red.png'},
 ]
 export const SAWE_ICON2 = [
     {title: '매관비판형', color:1, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_san_dae_dae_black.png'},
