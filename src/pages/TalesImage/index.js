@@ -1,16 +1,28 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import styled from 'styled-components';
-import { TALESDATASOURCE, COLORS, DEFAULTMAP } from '../../data';
+import { TALESDATASOURCE, COLORS, DEFAULTMAP, SAWE_DEFAULT } from '../../data';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
 const TalesImage = ({ }) => {
+    const imageSize = [200,400, 600,800,1200];
+    const [imgSizeIndex, setImgSizeIndex] = useState(1);
+    const [imgWidth, setImgWidth] = useState(600);
+    const [searchFlag, setSearchFlag] = useState(false);
     const [result, setResult] = useState([]);
     const [selectItem1, setSelectItem1] = useState(null);
     const [selectItem2, setSelectItem2] = useState(null);
+    const [indexPopup, setIndexPopup] = useState(false);
 
     useEffect(() => {
-        setResult(TALESDATASOURCE)
     }, [])
+    const onSearch = () => {
+        setSearchFlag(true)
+        setResult(TALESDATASOURCE)
+    }
+    const clearOptions = () => {
+        setSearchFlag(false)
+        setResult([])
+    }
     
     const onCheckItem = (data) => {
         if(data === selectItem1){
@@ -31,6 +43,24 @@ const TalesImage = ({ }) => {
         }
     }
 
+    const changeImgSizeUp = (type) => {
+        let temp = 0;
+        if(type){
+            if(imgSizeIndex < imageSize.length){
+                temp = imgSizeIndex + 1
+                setImgSizeIndex(temp)
+                setImgWidth(imageSize[temp])
+            }
+        }else{
+            if(imgSizeIndex > 0){
+                temp = imgSizeIndex - 1
+                setImgSizeIndex(temp)
+                setImgWidth(imageSize[temp])
+            }
+        }
+
+    }
+
     const selectCancel = (index) => {
         if(index === 1){
             setSelectItem1(null);
@@ -38,37 +68,38 @@ const TalesImage = ({ }) => {
             setSelectItem2(null);
         }
     }
-
-    const onSelectInputItem = (data) => {
-        let target = TALESDATASOURCE.filter(item => item.title.includes(data.target.value))
-        if(target){
-            setResult(target)
-        }
+    const toggleIndex = () => {
+        setIndexPopup(!indexPopup)
     }
+
     const imageViewer = () => {
         if(selectItem1 && selectItem2){
             return (
-                <ImageView>
+                <ImageView imgWidth={imgWidth}>
+                    <img alt='default' src={SAWE_DEFAULT[0].src} />
                     <img alt={selectItem1[0].title} src={selectItem1[0].src}/>
                     <img alt={selectItem2[1].title} src={selectItem2[1].src}/>
                 </ImageView>
             )
         }else if(selectItem1){
             return (
-                <ImageView>
+                <ImageView imgWidth={imgWidth}>
+                    <img alt='default' src={SAWE_DEFAULT[0].src} />
                     <img alt={selectItem1[0].title} src={selectItem1[0].src}/>
                 </ImageView>
             )
         }else if(selectItem2){
             return (
-                <ImageView>
+                <ImageView imgWidth={imgWidth}>
+                    <img alt='default' src={SAWE_DEFAULT[0].src} />
                     <img alt={selectItem2[0].title} src={selectItem2[0].src}/>
                 </ImageView>
             )
         }else{
             return (
-                <ImageView>
-                    <img alt={DEFAULTMAP[0].title} src={DEFAULTMAP[0].src}/>
+                <ImageView imgWidth={imgWidth}>
+                    <img alt='default' src={SAWE_DEFAULT[0].src} />
+                    {/* <img alt={DEFAULTMAP[0].title} src={DEFAULTMAP[0].src}/> */}
                 </ImageView>
             )
         }
@@ -77,100 +108,152 @@ const TalesImage = ({ }) => {
 
     return (
         <ImageWrapper>
-            <ImageCanvas>
-                <ImageCanvasSelectItem>
-                    {selectItem1 && <div onClick={e => selectCancel(1)}>{selectItem1[0].title} <AiOutlineCloseCircle /></div>}
-                    {selectItem2 && <div onClick={e => selectCancel(2)}>{selectItem2[0].title} <AiOutlineCloseCircle /></div>}
-                </ImageCanvasSelectItem>
-                <ImageCanvasContents>
-                    {imageViewer()}
-                </ImageCanvasContents>
-            </ImageCanvas>
-            <SideMenu>
-                <SearchBar onSelect={onSelectInputItem} />
-                <SearchResult data={result} onCheck={onCheckItem} />
+            <SideMenu height={'100px'}>
+                <SearchItem>
+                    <div>
+                        <div className="searchItemTitle">유형 검색</div>
+                        <label>상위유형
+                            <select>
+                                <option>전체</option>
+                            </select>
+                        </label>
+                        <label>하위유형
+                            <select>
+                                <option>전체</option>
+                            </select>
+                        </label>
+                        <label>서사명
+                            <select>
+                                <option>전체</option>
+                            </select>
+                        </label>
+                    </div>
+                </SearchItem>
+                <SearchItem>
+                    <div>
+                        <div className="searchItemTitle">공간 검색</div>
+                        <label>전승현황
+                            <select>
+                                <option>전체</option>
+                            </select>
+                        </label>
+                        <label>전승유형
+                            <select>
+                                <option>전체</option>
+                            </select>
+                        </label>
+                        <label>모티프결합
+                            <select>
+                                <option>전체</option>
+                            </select>
+                        </label>
+                    </div>
+                </SearchItem>
+                <SearchItem>
+                    <div>
+                        <button onClick={onSearch}>검색</button>
+                        <button onClick={clearOptions}>초기화</button>
+                    </div>
+                </SearchItem>
+
+                {
+                    searchFlag && (
+                        <SearchItem>
+                            <div>
+                                <div className="searchItemTitle">검색 결과</div>
+                                <SearchResult>
+                                    {
+                                        result.length > 0 ? (
+                                            result.map((item, index)=>{
+                                                return <div key={index}>
+                                                    <div>{item.title}</div>
+                                                    {
+                                                        item.data.map((itm, idx) => {
+                                                            return <div key={idx} onClick={e => onCheckItem(itm)}>- {itm[0].title}</div>
+                                                        })
+                                                    }
+                                                </div>
+                                            })
+                                        ) : (
+                                            <EmptyResult>검색 결과가 없습니다.</EmptyResult>
+                                        )
+                                    }
+                                </SearchResult>
+                            </div>
+                        </SearchItem>
+                    )
+                }
             </SideMenu>
+
+            <FloatingButton>
+                <div onClick={e => changeImgSizeUp(true)}>확대</div>
+                <div onClick={e => changeImgSizeUp(false)}>축소</div>
+                <div onClick={toggleIndex}>
+                    인덱스{indexPopup && <div><img alt='img' src='images/mapImage/default/1-1.png' /></div>}
+                </div>
+            </FloatingButton>
+            <ImageCanvas>
+                <div>
+                    <ImageCanvasSelectItem>
+                        {selectItem1 && <div onClick={e => selectCancel(1)}>{selectItem1[0].title} <AiOutlineCloseCircle /></div>}
+                        {selectItem2 && <div onClick={e => selectCancel(2)}>{selectItem2[0].title} <AiOutlineCloseCircle /></div>}
+                    </ImageCanvasSelectItem>
+                    <ImageCanvasContents>
+                        {imageViewer()}
+                    </ImageCanvasContents>
+                </div>
+            </ImageCanvas>
         </ImageWrapper>
     )
 };
 
 export default TalesImage;
 
-const SearchBar = ({onSelect}) => {
-    return (
-        <SideMenuWrap>
-            <div>
-                <div>이야기 검색</div>
-                <div><input type={'text'} list={'talesList'} onChange={onSelect}/></div>
-            </div>
-        </SideMenuWrap>
-    )
-}
-const SearchResult = ({data, onCheck}) => {
-    return (
-        <SearchResultWrap>
-            <div>
-                <div>검색 결과</div>
-                <div>
-                    {
-                        (data.length > 0) ? (
-                            data.map((item, index) => {
-                                return (
-                                    <SearchResultItem key={index}>
-                                        <div>{item.title}</div>
-                                            {
-                                                item.data.map((innerItem, innerIndex) => {
-                                                    return (
-                                                        <SearchResultInnerItem key={innerIndex} onClick={e => onCheck(innerItem)}>
-                                                            {'- ' + innerItem[0].title}
-                                                        </SearchResultInnerItem>
-                                                    )
-                                                })
-                                            }
-                                    </SearchResultItem>
-                                )
-                            })
-                        ) : (
-                            <EmptyList>검색 결과가 없습니다.</EmptyList>
-                        )
-                    }
-                </div>
-            </div>
-        </SearchResultWrap>
-    )
-}
-
 
 const ImageWrapper = styled.div`
     width: 100%;
     height: 100%;
+    >div{
+        float:left;
+    }
 `;
 
 const ImageCanvas = styled.div`
-    width: calc(100% - 300px);
-    height: 100%;
-    float:left;
+    width: calc(100% - 300px - 20px);
+    height: calc(100% - 20px);
+    padding: 10px;
+    >div{
+        background-color: white;
+        height: 100%;
+
+    }
 `;
 const ImageCanvasContents = styled.div`
     height: calc(100% - 60px);
-    padding: 0px 50px;
+    padding: 0px 30px;
 `;
 const ImageView = styled.div`
     height: 90%;
     min-width: 650px;
     // text-align: center;
-    background-color: white;
     position: relative;
+    padding-left: 20%;
     >img{
         // height: 100%;
-        width: 500px;
+        width: ${props => props.imgWidth}px;
         // height: calc(90% - 200px);
         position: absolute;
-        left: 10%;
+        // left: 10%;
+        // margin: 0 auto;
+
+        display:inline-block;
+        margin-left:auto;
+        margin-right:auto;
     }
 `;
 const ImageCanvasSelectItem = styled.div`
     height: 60px;
+    margin-left: 30px;
     >div:first-child{
         margin-left: 50px;
     }
@@ -184,76 +267,94 @@ const ImageCanvasSelectItem = styled.div`
         padding: 10px 15px;
     }
 `;
+
 const SideMenu = styled.div`
     width: 300px;
     height: 100%;
     float:left;
+    overflow-y:scroll;
 `;
-const SideMenuWrap = styled.div`
+const SearchItem = styled.div`
     padding: 10px 10px 0px;
-    // height: 90px;
     >div{
+        padding: 12px;
         background-color: white;
         border-radius: 5px;
         border: 1px solid ${COLORS.borderColor || 'black'};
-        padding: 10px;
-        >div:first-child{
-            height: 30px;
+        .searchItemTitle{
+            line-height: 45px;
+            font-weight: bold;
+            font-size: 19px;
         }
-        input{
-            text-indent: 10px;
-        }
-        input,
-        select{
-            padding: 0px;
-            margin: 0px;
-            height: 30px;
+        >label{
+            height: 35px;
+            display: block;
             width: 100%;
+            input,
+            select{
+                width: 60%;
+                float:right;
+                height: 25px;
+            }
         }
-        select{
-            width: 100%;
+        >button{
+            width: 50%;
+            height: 40px;
+            font-size: 18px;
+            background-color: #8D6E63;
+            border: 1px solid ${COLORS.borderColor || 'black'};
+            color: white;
+            font-weight: bold;
         }
-    }
-`;
-const SearchResultWrap = styled.div`
-    padding: 10px 10px 0px;
-    height: calc(100% - 150px);
-    // height: calc(100% - 90px - 90px - 60px);
-    >div{
-        height: 100%;
-        background-color: white;
-        border-radius: 5px;
-        border: 1px solid ${COLORS.borderColor || 'black'};
-        padding: 10px;
-        >div:first-child{
-            height: 30px;
-        }
-        >div:last-child{
-            height: calc(100% - 30px);
-            overflow-y: scroll;
-        }
-    }
-`;
-const SearchResultItem = styled.div`
-    border: 1px solid ${COLORS.borderColor || 'black'};
-    padding: 5px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    >div:first-child{
-        height: 30px;
-        line-height: 30px;
-        font-weight: bold;
     }
 `;
 
-const SearchResultInnerItem = styled.div`
-    padding-left: 5px;
-    height: 40px;
-    line-height: 40px;
-`;
 const EmptyList = styled.div`
     height: 40px;
     line-height: 40px;
     font-weight: bold;
+`;
+const SearchResult = styled.div`
+    height: 300px;
+    overflow-y: scroll;
+    >div{
+        cursor: pointer;
+        height: 40px;
+        line-height: 40px;
+        text-indent: 5px;
+    }
+`;
+const EmptyResult = styled.div`
+    height: 40px;
+    font-size: 22px;
+    text-align: center;
+    font-weight: bold;
+`;
+
+const FloatingButton = styled.div`
+    position: absolute;
+    left: 320px;
+    top: 140px;
+    z-index: 99;
+    >div{
+        font-size: 16px;
+        line-height: 50px;
+        background-color: white;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        border: 1px solid #B0BEC5;
+        >div{
+            width: 120px;
+            height: 150px;
+            margin-top: -50px;
+            margin-left: 55px;
+            background-color: white;
+            border: 1px solid #B0BEC5;
+            padding-top: 5px;
+            img{
+                width: 100%;
+            }
+        }
+    }
 `;

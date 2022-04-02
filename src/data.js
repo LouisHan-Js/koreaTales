@@ -1,12 +1,21 @@
 
 // 색상
 export const COLORS = {
-    bgColor1: '#E1F5FE',
+    bgColor1: '#D7CCC8',
     borderColor: '#CFD8DC',  
-    menuHover: '#ECEFF1',
+    menuColor: '#CFD8DC',
+    menuHover: '#BCAAA4',
     buttonColor: '#ECEFF1'
 }
 
+export const MENUS = [
+    {key:0, title:'증거물', pageKey:null},
+    {key:1, title:'관련인물', pageKey:null},
+    {key:2, title:'민속', pageKey:null},
+    {key:3, title:'문헌', pageKey:null},
+    {key:4, title:'출전', pageKey:3},
+    {key:5, title:'기타', pageKey:null},
+]
 // 공지
 export const NOTICE = [
     {index:4, title:'테스트 입니다.', contents:'공지사항 테스트4', writer:'관리자'},
@@ -99,16 +108,38 @@ export const ETCIMAGES = [
     {title: '기타', color:4, contents: '이야기 상세 설명', src:'images/mapImage/etc/8-4.png'},
     {title: '기타', color:5, contents: '이야기 상세 설명', src:'images/mapImage/etc/8-5.png'},
 ]
+export const SAWE_DEFAULT = [
+    {title: '권역', color:1, contents: '이야기 상세 설명', src:'images/talesImages/line/sawe_map_black.png'},
+    {title: '권역', color:2, contents: '이야기 상세 설명', src:'images/talesImages/line/sawe_map_blue.png'},
+    {title: '권역', color:3, contents: '이야기 상세 설명', src:'images/talesImages/line/sawe_map_red.png'},
+]
+// export const SAWE_LINE = [
+//     {title: '기타', color:1, contents: '이야기 상세 설명', src:'images/mapImage/etc/8-1.png'},
+//     {title: '기타', color:2, contents: '이야기 상세 설명', src:'images/mapImage/etc/8-2.png'},
+//     {title: '기타', color:3, contents: '이야기 상세 설명', src:'images/mapImage/etc/8-3.png'},
+// ]
+export const SAWE_ICON1 = [
+    {title: '대지 대지', color:1, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_black.png'},
+    {title: '대지 대지', color:2, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_blue.png'},
+    {title: '대지 대지', color:3, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_dae_dae_red.png'},
+]
+export const SAWE_ICON2 = [
+    {title: '산 대지 대지', color:1, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_san_dae_dae_black.png'},
+    {title: '산 대지 대지', color:2, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_san_dae_dae_blue.png'},
+    {title: '산 대지 대지', color:3, contents: '이야기 상세 설명', src:'images/talesImages/character/sawe_san_dae_dae_red.png'},
+]
 
 // 지도 목록
 export const TALESDATASOURCE = [
-    {title: '어려운 소송에 명판결하기', contents: '이야기 상세 설명', data: [HARDWORKMAP]},
-    {title: '명당 잡아준 명풍수 변이형 지도', contents: '이야기 상세 설명', data: [VARIANT1, VARIANT2]},
-    {title: '명당 잡아준 명풍수 기본형 지도', contents: '이야기 상세 설명', data: [NORMAL1,NORMAL2,NORMAL3]},
-    {title: '명당 잡아준 명풍수 라인', contents: '이야기 상세 설명', data: [poong, poong_line]},
-    {title: '푸대접 받던 사위1', contents: '이야기 상세 설명', data: [sawe1,sawe2]},
-    {title: '푸대접 받던 사위 라인', contents: '이야기 상세 설명', data: [sawe3]},
-    {title: '그외', contents: '이야기 상세 설명', data: [ETCIMAGES]}
+    {title: '푸대접 받던 사위', contents: '참고 내용', data: [SAWE_ICON1, SAWE_ICON2]},
+    // {title: '푸대접 받던 사위', contents: '산 대지 대지', data: [SAWE_ICON2]},
+    // {title: '어려운 소송에 명판결하기', contents: '이야기 상세 설명', data: [HARDWORKMAP]},
+    // {title: '명당 잡아준 명풍수 변이형 지도', contents: '이야기 상세 설명', data: [VARIANT1, VARIANT2]},
+    // {title: '명당 잡아준 명풍수 기본형 지도', contents: '이야기 상세 설명', data: [NORMAL1,NORMAL2,NORMAL3]},
+    // {title: '명당 잡아준 명풍수 라인', contents: '이야기 상세 설명', data: [poong, poong_line]},
+    // {title: '푸대접 받던 사위1', contents: '이야기 상세 설명', data: [sawe1,sawe2]},
+    // {title: '푸대접 받던 사위 라인', contents: '이야기 상세 설명', data: [sawe3]},
+    // {title: '그외', contents: '이야기 상세 설명', data: [ETCIMAGES]}
 ]
 
 // 인기검색어
@@ -307,3 +338,55 @@ export const TALESLOCATIONS = [
     {index: 173, position:{lng:128.4321068, lat:37.2320172},  title: '제목 위치', contents:'간략 내용 위치',  name: '영월읍', address: '강원도 영월군 북면 원동재로'},
     {index: 174, position:{lng:127.750978, lat:36.1524256},  title: '제목 위치', contents:'간략 내용 위치',  name: '양강면', address: '충청북도 영동군 양강면'},
 ]
+
+export const TALESLOCATIONS2 = [
+    {index: 0, position:{lng:127.2169701,lat:37.5853331}, first:1, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '와부읍', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 1, position:{lng:126.3208285,lat:37.7033913}, first:3, second:2, third:1, one:2,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '삼산면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 2, position:{lng:126.6504771,lat:37.4636808}, first:1, second:1, third:3, one:1,two:2,three:2, title: '설화 제목', contents:'설화 내용',  name: '남구', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 3, position:{lng:128.8808633,lat:37.7390776}, first:1, second:2, third:1, one:1,two:1,three:3, title: '설화 제목', contents:'설화 내용',  name: '남양동', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 4, position:{lng:127.7243872,lat:37.88284300000001}, first:1, second:2, third:1, one:1,two:2,three:1, title: '설화 제목', contents:'설화 내용',  name: '서면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 5, position:{lng:129.1595698,lat:37.4138914}, first:3, second:1, third:1, one:1,two:3,three:1, title: '설화 제목', contents:'설화 내용',  name: '영흥리', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 6, position:{lng:128.5851325,lat:38.0715807}, first:1, second:2, third:2, one:2,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '수안보중학교', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 7, position:{lng:128.4749599,lat:37.1997143}, first:1, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '노은면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 8, position:{lng:127.9971969,lat:36.8467798}, first:2, second:1, third:1, one:1,two:1,three:3, title: '설화 제목', contents:'설화 내용',  name: '청원군', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 9, position:{lng:127.7541311,lat:37.0481171}, first:1, second:1, third:1, one:1,two:3,three:1, title: '설화 제목', contents:'설화 내용',  name: '단양군', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 10, position:{lng:127.5321341,lat:36.5573058}, first:1, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '대덕동', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 11, position:{lng:128.3655186,lat:36.9845473}, first:2, second:2, third:2, one:2,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '보령시', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 12, position:{lng:126.6487676,lat:36.8737717}, first:3, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '부여읍', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 13, position:{lng:126.6129441,lat:36.3331629}, first:2, second:1, third:3, one:1,two:2,three:1, title: '설화 제목', contents:'설화 내용',  name: '정동리', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 14, position:{lng:126.9112371,lat:36.2755478}, first:1, second:2, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '운주면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 15, position:{lng:126.9697398,lat:36.3432187}, first:1, second:3, third:1, one:3,two:1,three:3, title: '설화 제목', contents:'설화 내용',  name: '부안읍', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 16, position:{lng:127.27745,lat:36.0924359}, first:1, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '군산시', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 17, position:{lng:126.7368971,lat:35.7295906}, first:1, second:1, third:2, one:1,two:1,three:3, title: '설화 제목', contents:'설화 내용',  name: '정우면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 18, position:{lng:126.7366293,lat:35.9676772}, first:1, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '옹동면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 19, position:{lng:126.8759256,lat:35.644733}, first:1, second:2, third:1, one:2,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '옹동면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 20, position:{lng:126.9745358,lat:35.6434498}, first:2, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '함평군', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 21, position:{lng:127.04732,lat:35.6929579}, first:1, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '엄다면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 22, position:{lng:126.5165524,lat:35.0659399}, first:3, second:1, third:1, one:1,two:1,three:3, title: '설화 제목', contents:'설화 내용',  name: '나산면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 23, position:{lng:126.5680572,lat:35.0028682}, first:1, second:1, third:3, one:1,two:3,three:1, title: '설화 제목', contents:'설화 내용',  name: '서면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 24, position:{lng:126.6091004,lat:35.1139372}, first:2, second:1, third:1, one:3,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '승주읍', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 25, position:{lng:127.4882745,lat:34.9948247}, first:1, second:2, third:2, one:1,two:1,three:3, title: '설화 제목', contents:'설화 내용',  name: '주암면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 26, position:{lng:127.389868,lat:35.0144092}, first:1, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '신안군', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 27, position:{lng:127.2351112,lat:35.0768489}, first:2, second:1, third:1, one:3,two:2,three:1, title: '설화 제목', contents:'설화 내용',  name: '흑산면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 28, position:{lng:126.101074,lat:34.827332}, first:1, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '북면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 29, position:{lng:126.1265077,lat:34.7461967}, first:1, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '도곡면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 30, position:{lng:127.1323104,lat:35.16811879999999}, first:1, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '월성동', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 31, position:{lng:126.9175423,lat:34.9961615}, first:1, second:1, third:2, one:3,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '강구면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 32, position:{lng:129.2196097,lat:35.8365351}, first:1, second:2, third:1, one:2,two:1,three:3, title: '설화 제목', contents:'설화 내용',  name: '옥정동', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 33, position:{lng:129.3786484,lat:36.3618918}, first:2, second:1, third:1, one:2,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '풍산읍', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 34, position:{lng:128.7346713,lat:36.5670478}, first:1, second:1, third:1, one:1,two:3,three:2, title: '설화 제목', contents:'설화 내용',  name: '군위읍', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 35, position:{lng:128.5720154,lat:36.580112}, first:1, second:2, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '소보면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 36, position:{lng:128.5687588,lat:36.23985649999999}, first:1, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '군위 소보', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 37, position:{lng:128.4753617,lat:36.2548736}, first:1, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '의흥면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 38, position:{lng:128.4888417,lat:36.3416695}, first:3, second:1, third:2, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '고로면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 39, position:{lng:128.7152102,lat:36.1758204}, first:3, second:1, third:1, one:3,two:2,three:1, title: '설화 제목', contents:'설화 내용',  name: '가창면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 40, position:{lng:128.7897106,lat:36.1202579}, first:1, second:2, third:3, one:3,two:1,three:3, title: '설화 제목', contents:'설화 내용',  name: '선산읍', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 41, position:{lng:128.62285,lat:35.8026677}, first:1, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '위천면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 42, position:{lng:128.2989526,lat:36.2429169}, first:1, second:3, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '마리면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 43, position:{lng:127.8331431,lat:35.7496158}, first:1, second:3, third:1, one:1,two:3,three:1, title: '설화 제목', contents:'설화 내용',  name: '삼랑진읍', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 44, position:{lng:127.8656526,lat:35.6744155}, first:2, second:3, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '산내면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 45, position:{lng:128.8377458,lat:35.3957677}, first:1, second:1, third:3, one:2,two:1,three:3, title: '설화 제목', contents:'설화 내용',  name: '진례면', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 46, position:{lng:128.8808492,lat:35.5842047}, first:1, second:2, third:1, one:1,two:2,three:1, title: '설화 제목', contents:'설화 내용',  name: '중동리', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+    {index: 47, position:{lng:128.747734,lat:35.2490716}, first:2, second:1, third:1, one:1,two:1,three:1, title: '설화 제목', contents:'설화 내용',  name: '대덕동', orator: '홍길동', gender: '남', age:'74', date:'2020-01-23'},
+];
+		

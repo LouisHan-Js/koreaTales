@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import styled from 'styled-components';
-import { TALESLOCATIONS, COLORS } from '../../data';
-// AIzaSyBzmQC_yVrMSnh85NQN36RlzH1Kb6UuZW4
+import { TALESLOCATIONS, TALESLOCATIONS2, COLORS } from '../../data';
+import { AiOutlinePlus, AiOutlineMinus, AiOutlineBook } from "react-icons/ai";
+
 const TalesMap = ({ }) => {
     const [result, setResult] = useState([]);
     const [searchValue, setSearchValue] = useState('');
@@ -10,7 +11,7 @@ const TalesMap = ({ }) => {
     const zoom = 7;
 
     useEffect(() => {
-        setResult(TALESLOCATIONS)
+        setResult(TALESLOCATIONS2)
     }, [])
 
 
@@ -21,6 +22,7 @@ const TalesMap = ({ }) => {
     };
     const MyMapComponent = ({ center, zoom }) => {
         const [map, setMap] = useState(null);
+        const [indexPopup, setIndexPopup] = useState(false);
         const [markers, setMarkers] = useState([]);
         const ref = useRef();
         // let historicalOverlay;
@@ -32,6 +34,7 @@ const TalesMap = ({ }) => {
                 let googleMap = new window.google.maps.Map(ref.current, {
                     center,
                     zoom,
+                    disableDefaultUI: true,
                 });
                 setMap(googleMap)
             }
@@ -42,8 +45,24 @@ const TalesMap = ({ }) => {
                 item.setMap(null)
             });
         }
+        const closeUp = () => {
+            map.setZoom(map.getZoom()+1)
+        }
+        const closeDown = () => {
+            map.setZoom(map.getZoom()-1)
+            
+        }
+        const toggleIndex = () => {
+            setIndexPopup(!indexPopup)
+        }
 
         const makeMarkers = (dataList) => {
+            const image = {
+                url: "/images/map/point.png",
+                size: new window.google.maps.Size(32, 32),
+                origin: new window.google.maps.Point(0, 0),
+                anchor: new window.google.maps.Point(12, 12),
+            };
             let tempMarkers = []
             clearMarkers()
 
@@ -52,8 +71,34 @@ const TalesMap = ({ }) => {
                     const marker = new window.google.maps.Marker({
                         position: item.position,
                         map: map,
+                        icon: image
+                    });
+                    const infowindow = new window.google.maps.InfoWindow({
+                        content: `
+                        <div class='customInfo'>
+                            <div class='title'>설화 명:<span>${item.title}</span></div>
+                            <div class='title'>채록 장소:<span>${item.name}</span></div>
+                            <div class='info'>
+                                <div>구연자:<span>${item.orator}</span></div>
+                                <div>나이:<span>${item.gender}</span></div>
+                                <div>성별:<span>${item.age}</span></div>
+                            </div>
+                            <div class='title'>채록 시기:<span>${item.date}</span></div>
+                            <div class='title'>상세 내용</div>
+                            <div class='contents'>
+                                <div>${item.contents}</div>
+                            </div>
+                        </div>`,
                     });
                     marker.index = item.index
+                    
+                    marker.addListener("click", () => {
+                        infowindow.open({
+                          anchor: marker,
+                          map,
+                          shouldFocus: false,
+                        });
+                    });
 
                     tempMarkers.push(marker)
                 });
@@ -61,84 +106,82 @@ const TalesMap = ({ }) => {
             }
         }
 
-        return <GoogleMap ref={ref} id="map" />;
+        return (
+            <>
+                <FloatingButton>
+                    <div onClick={closeUp}>확대</div>
+                    <div onClick={closeDown}>축소</div>
+                    <div onClick={toggleIndex}>
+                        인덱스{indexPopup && <div><img alt='img' src='images/mapImage/default/1-1.png' /></div>}
+                    </div>
+                </FloatingButton>
+                <GoogleMap ref={ref} id="map" />
+            </>
+        );
     }
 
     const onSearch = (e) => {
         setSearchValue(e.target.value)
-        if(e.target.value){
-            setResult(TALESLOCATIONS.filter(item => item.name.includes(e.target.value) || item.address.includes(e.target.value)))
-        }else{
-            setResult(TALESLOCATIONS)
-        }
     }
 
     return (
         <GoogleMapWrapper>
             <Wrapper apiKey={"AIzaSyBzmQC_yVrMSnh85NQN36RlzH1Kb6UuZW4"} render={render}>
-                <MyMapComponent center={center} zoom={zoom} />
                 <SideMenu height={'100px'}>
-                    <SearchBar onSearch={onSearch} />
-                    {/* <SelectMenu />
-                    <SelectMenu /> */}
+                    <SearchItem>
+                        <div>
+                            <div className="searchItemTitle">유형 검색</div>
+                            <label>상위유형
+                                <select>
+                                    <option>전체</option>
+                                </select>
+                            </label>
+                            <label>하위유형
+                                <select>
+                                    <option>전체</option>
+                                </select>
+                            </label>
+                            <label>서사명
+                                <select>
+                                    <option>전체</option>
+                                </select>
+                            </label>
+                        </div>
+                    </SearchItem>
+                    <SearchItem>
+                        <div>
+                            <div className="searchItemTitle">공간 검색</div>
+                            <label>전승현황
+                                <select>
+                                    <option>전체</option>
+                                </select>
+                            </label>
+                            <label>전승유형
+                                <select>
+                                    <option>전체</option>
+                                </select>
+                            </label>
+                            <label>모티프결합
+                                <select>
+                                    <option>전체</option>
+                                </select>
+                            </label>
+                        </div>
+                    </SearchItem>
+                    <SearchItem>
+                        <div>
+                            <button>검색</button>
+                            <button>권역 지도</button>
+                        </div>
+                    </SearchItem>
                 </SideMenu>
-                <SideMenu height={'calc(100% - 100px)'}>
-                    <SearchResult list={result} />
-                </SideMenu>
+                <MyMapComponent center={center} zoom={zoom} />
             </Wrapper>
         </GoogleMapWrapper>
     )
 };
 
 export default TalesMap;
-
-const SearchBar = ({onSearch}) => {
-    return (
-        <SideMenuWrap>
-            <div>
-                <div>주소 검색</div>
-                <div><input onChange={onSearch} /></div>
-            </div>
-        </SideMenuWrap>
-    )
-}
-const SelectMenu = () => {
-    return (
-        <SideMenuWrap>
-            <div>
-                <div>선택</div>
-                <div>
-                    <select>
-                        <option>test</option>
-                    </select>
-                </div>
-            </div>
-        </SideMenuWrap>
-    )
-}
-const SearchResult = ({list}) => {
-    return (
-        <SearchResultWrap>
-            <div>
-                <div>검색 결과</div>
-                <div>
-                    {
-                        list.map((item, index) => {
-                            return (
-                                <SearchResultItem key={index}>
-                                    <div><strong>{item.title}({item.name})</strong></div>
-                                    <div>{item.contents}</div>
-                                    <div>{item.address}</div>
-                                </SearchResultItem>
-                            )
-                        })
-                    }
-                </div>
-            </div>
-        </SearchResultWrap>
-    )
-}
-
 
 const GoogleMapWrapper = styled.div`
     width: 100%;
@@ -152,56 +195,67 @@ const GoogleMap = styled.div`
 `;
 const SideMenu = styled.div`
     width: 300px;
-    height: ${props => props.height};
+    height: 100%;
     float:left;
 `;
-const SideMenuWrap = styled.div`
+const SearchItem = styled.div`
     padding: 10px 10px 0px;
     >div{
+        padding: 12px;
         background-color: white;
         border-radius: 5px;
         border: 1px solid ${COLORS.borderColor || 'black'};
-        padding: 10px;
-        >div:first-child{
-            height: 30px;
+        .searchItemTitle{
+            line-height: 45px;
+            font-weight: bold;
+            font-size: 19px;
         }
-        input,
-        select{
-            padding: 0px;
-            margin: 0px;
-            height: 30px;
+        >label{
+            height: 35px;
+            display: block;
             width: 100%;
+            input,
+            select{
+                width: 60%;
+                float:right;
+                height: 25px;
+            }
         }
-        select{
-            width: 100%;
+        >button{
+            width: 50%;
+            height: 40px;
+            font-size: 18px;
+            background-color: #8D6E63;
+            border: 1px solid ${COLORS.borderColor || 'black'};
+            color: white;
+            font-weight: bold;
         }
     }
 `;
-const SearchResultWrap = styled.div`
-    padding: 10px 10px 0px;
-    height: 90%;
+const FloatingButton = styled.div`
+    position: absolute;
+    left: 320px;
+    top: 130px;
+    z-index: 99;
     >div{
-        height: 100%;
+        font-size: 16px;
+        line-height: 50px;
         background-color: white;
-        border-radius: 5px;
-        border: 1px solid ${COLORS.borderColor || 'black'};
-        padding: 10px;
-        >div:first-child{
-            height: 30px;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        border: 1px solid #ECEFF1;
+        >div{
+            width: 120px;
+            height: 150px;
+            margin-top: -50px;
+            margin-left: 55px;
+            background-color: white;
+            border: 1px solid #ECEFF1;
+            padding-top: 5px;
+            img{
+                width: 100%;
+            }
         }
-        >div:last-child{
-            height: calc(100% - 30px);
-            overflow-y: scroll;
-        }
-    }
-`;
-const SearchResultItem = styled.div`
-    border: 1px solid ${COLORS.borderColor || 'black'};
-    padding: 5px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    >div{
-        overflow:hidden;
     }
 `;
